@@ -2,7 +2,11 @@
 [Tt]emp/
 [Bb]uild/
 [Bb]uilds/
-UnityProject/OutbreakVR/obj*
+ObjectPoolingSystem/Assets/AssetStoreTools
+ObjectPoolingSystem/Assets/AssetStoreTools.meta
+ObjectPoolingSystem/Assets/Build.meta
+ObjectPoolingSystem/obj
+ObjectPoolingSystem/ProjectSettings
 
 # Visual Studio cache directory
 .vs/

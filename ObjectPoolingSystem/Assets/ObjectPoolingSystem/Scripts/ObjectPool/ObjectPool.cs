@@ -2,7 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
+/// <summary>
+/// Pool to manage objects,
+/// it will create objects by using the new keyword
+/// When the pool is empty and a 'getObject' is called a new object is created in the pool and retrieved at that time
+/// When you are done using an object return it to the pool for future use
+/// </summary>
+/// <typeparam name="T"></typeparam>
 [System.Serializable]
 public class ObjectPool<T> where T : class, IReusable
 {
@@ -16,7 +22,6 @@ public class ObjectPool<T> where T : class, IReusable
     /// </summary>
     private System.Type m_Type = null;
 
-
     /// <summary>
     /// List of all the unpooled game objects
     /// </summary>
@@ -27,9 +32,9 @@ public class ObjectPool<T> where T : class, IReusable
     /// Sets the Prefab from which the objects in the pool are generated
     /// </summary>
     /// <param name="a_ObjPrefab"></param>
-    public ObjectPool(string a_strObjectType, int a_iStartSize = 0)
+    public ObjectPool(int a_iStartSize = 0)
     {
-        m_Type = System.Type.GetType(a_strObjectType);
+        m_Type = typeof(T);
         m_Pool = new Stack<T>(a_iStartSize);
 
         for (int l_iIndex = 0; l_iIndex < a_iStartSize; l_iIndex++)

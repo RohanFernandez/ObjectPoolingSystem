@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Specialized pooled class for objects of type MonoBehaviour,
+/// because creation requires instantiation in Unity instead of using new, adding an object to the heap
+/// </summary>
+/// <typeparam name="T"></typeparam>
 public class MonoObjectPool<T> : ObjectPool<T> where T : MonoBehaviour, IReusable
 {
     /// <summary>
@@ -21,7 +26,7 @@ public class MonoObjectPool<T> : ObjectPool<T> where T : MonoBehaviour, IReusabl
     /// <param name="a_Prefab"></param>
     /// <param name="a_iStartPoolCapacity"></param>
     public MonoObjectPool(T a_Prefab, GameObject a_Parent, int a_iStartSize = 0)
-        :  base(typeof(T).ToString())
+        :  base()
     {
         m_goPrefab = a_Prefab;
         m_goParent = a_Parent;

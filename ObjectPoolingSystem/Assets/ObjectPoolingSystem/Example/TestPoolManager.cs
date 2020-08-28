@@ -6,6 +6,10 @@ using ns_YourNamespace;
 public class TestPoolManager : MonoBehaviour
 {
     #region MONO
+
+    [SerializeField]
+    private GameObject m_ParentGameObj = null;
+
     [SerializeField]
     private TestMonoReusableObject m_ReusablePrefab = null;
 
@@ -29,6 +33,7 @@ public class TestPoolManager : MonoBehaviour
     public void monoGetObjectFromPool()
     {
         TestMonoReusableObject l_ReusableObject = m_MonoObjectPool.getObject();
+        l_ReusableObject.m_txtObjNumber.text = (m_MonoObjectPool.getActiveList().Count - 1).ToString();
         updateCount();
     }
 
@@ -84,7 +89,7 @@ public class TestPoolManager : MonoBehaviour
     public void nonmonoReturnObjectToPool()
     {
         List<TestNonMonoReusableObject> l_lstNonMonoReusable = m_NonMonoObjectPool.getActiveList();
-        TestNonMonoReusableObject l_NonMonoReusableObject = l_lstNonMonoReusable.Count > 0 ? l_lstNonMonoReusable[0] : null;
+        TestNonMonoReusableObject l_NonMonoReusableObject = l_lstNonMonoReusable.Count > 0 ? l_lstNonMonoReusable[l_lstNonMonoReusable.Count - 1] : null;
         if (l_NonMonoReusableObject == null)
         {
             Debug.LogError("TestManager::ReturnObjectToPool:: Active object list is empty. Count ==  0");
@@ -105,7 +110,7 @@ public class TestPoolManager : MonoBehaviour
 
     void Awake()
     {
-        m_MonoObjectPool = new MonoObjectPool<TestMonoReusableObject>(m_ReusablePrefab, gameObject, m_iMonoObjPoolStartSize);
+        m_MonoObjectPool = new MonoObjectPool<TestMonoReusableObject>(m_ReusablePrefab, m_ParentGameObj, m_iMonoObjPoolStartSize);
         m_NonMonoObjectPool = new TestNonMonoPool(m_iNonMonoPooledStartCount);
 
         updateCount();
