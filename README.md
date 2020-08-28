@@ -1,5 +1,7 @@
 # **Object Pooling System**
 
+-------- A release of this Unity Package can be directly downloaded from the releases panel.
+
 This asset will be used to get and return objects from and to the pool providing reusability and automatic creation of the object if the pool is empty.
 You can use this asset for reusability of your objects.
 
