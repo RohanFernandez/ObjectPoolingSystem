@@ -8,9 +8,8 @@ You can use this asset for reusability of your objects.
 
 -------- ObjectPool<T>
 
-ObjectPool(string a_strObjectType, int a_iStartSize = 0)
+ObjectPool(int a_iStartSize = 0)
 
-where a_strObjectType is the typeof(T)
 a_iStartSize is the size of the pooled objects
 
 Pool.getObject() returns a object of type T from the pool and sets it to active.
