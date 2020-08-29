@@ -1,24 +1,15 @@
-//Created by Rohan Fernandez
-//Contact fretbuzz31f@gmail.com for any details.
+# **Object Pooling System**
 
-Object Pooling System
+-------- A release of this Unity Package can be directly downloaded from the releases panel.
 
--Instantiation of gameobjects or creating objects require time to create and processing each time.
--Using an object pool you can reuse the objects.
--This asset will be used to get and return objects from and to the pool.
--On creating the pool for the first time you can set the size of the pool, so that the pool is instantiated with the total amount of object you require at max. This prevents from instantiating/creating objects after that.
--You can specialize the pool to act specifically for different types of objects, a MonoObjectPool is included in this asset for pooling of GameObjects(MonoBehaviour).
--Gameobjects managed by the MonoObjectPool can be set to have a specific parent gameobject.
--You can use this asset for reusability of your objects and automatic creation of the object if the pool is empty.
--If the pool is empty and you call getObject(), the pool will automatically create an object.
--One completed using an object return the object back into the pool.
+This asset will be used to get and return objects from and to the pool providing reusability and automatic creation of the object if the pool is empty.
+You can use this asset for reusability of your objects.
 
 
 -------- ObjectPool<T>
 
-ObjectPool(string a_strObjectType, int a_iStartSize = 0)
+ObjectPool(int a_iStartSize = 0)
 
-where a_strObjectType is the typeof(T)
 a_iStartSize is the size of the pooled objects
 
 Pool.getObject() returns a object of type T from the pool and sets it to active.
